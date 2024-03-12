@@ -1,6 +1,7 @@
 vendor/
 .vscode/
 .idea/
+.task.db
 
 //exe
 __debug_bin.exe

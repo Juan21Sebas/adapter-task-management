@@ -20,4 +20,7 @@ func RegisterRoutes(e *gin.Engine, db *sql.DB) {
 
 	// Registra las rutas
 	e.POST("/task/", taskManagementHandler.postTask())
+	e.GET("/task/:id", taskManagementHandler.getTask())
+	e.PUT("/task/:id", taskManagementHandler.putTask())
+	e.DELETE("/task/:id", taskManagementHandler.deleteTask())
 }
