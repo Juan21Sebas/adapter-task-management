@@ -2,9 +2,6 @@ package http
 
 import (
 	"net/http"
-	"strconv"
-
-	entity "adapter-task-management/internal/core/domain/repository"
 
 	"github.com/gin-gonic/gin"
 
@@ -31,7 +28,7 @@ func (o *topsecretHandler) postTask() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var task model.Task
 		if err := c.BindJSON(&task); err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid Input "})
+			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid Request"})
 			return
 		}
 		entityResponse, err := o.taskService.CreateTask(c, &task)
@@ -39,7 +36,7 @@ func (o *topsecretHandler) postTask() gin.HandlerFunc {
 			c.JSON(http.StatusNotFound, err.Error())
 			return
 		}
-		entityResponse.Result.Details = []entity.Detail{{InternalCode: strconv.Itoa(http.StatusOK), Message: http.StatusText(http.StatusOK)}}
+
 		c.Set("entityResponse", *entityResponse)
 		c.JSON(http.StatusOK, entityResponse)
 	}
@@ -50,7 +47,7 @@ func (o *topsecretHandler) getTask() gin.HandlerFunc {
 		var task modelget.Task
 		task.Id = c.Param("id")
 		if err := c.ShouldBindQuery(&task); err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid Input "})
+			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid Request "})
 			return
 		}
 		entityResponse, err := o.taskService.SelectTask(c, &task)
@@ -58,7 +55,7 @@ func (o *topsecretHandler) getTask() gin.HandlerFunc {
 			c.JSON(http.StatusNotFound, err.Error())
 			return
 		}
-		entityResponse.Result.Details = []entity.Detail{{InternalCode: strconv.Itoa(http.StatusOK), Message: http.StatusText(http.StatusOK)}}
+
 		c.Set("entityResponse", *entityResponse)
 		c.JSON(http.StatusOK, entityResponse)
 	}
@@ -69,11 +66,11 @@ func (o *topsecretHandler) putTask() gin.HandlerFunc {
 		var task modelupdate.Task
 		task.Id = c.Param("id")
 		if err := c.ShouldBindQuery(&task); err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid Input "})
+			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid Request "})
 			return
 		}
 		if err := c.BindJSON(&task); err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid Input "})
+			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid Request "})
 			return
 		}
 		entityResponse, err := o.taskService.UpdateTask(c, &task)
@@ -81,7 +78,7 @@ func (o *topsecretHandler) putTask() gin.HandlerFunc {
 			c.JSON(http.StatusNotFound, err.Error())
 			return
 		}
-		entityResponse.Result.Details = []entity.Detail{{InternalCode: strconv.Itoa(http.StatusOK), Message: http.StatusText(http.StatusOK)}}
+
 		c.Set("entityResponse", *entityResponse)
 		c.JSON(http.StatusOK, entityResponse)
 	}
@@ -92,7 +89,7 @@ func (o *topsecretHandler) deleteTask() gin.HandlerFunc {
 		var task modeldelete.Task
 		task.Id = c.Param("id")
 		if err := c.ShouldBindQuery(&task); err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid Input "})
+			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid Request "})
 			return
 		}
 		entityResponse, err := o.taskService.DeleteTask(c, &task)
@@ -100,7 +97,7 @@ func (o *topsecretHandler) deleteTask() gin.HandlerFunc {
 			c.JSON(http.StatusNotFound, err.Error())
 			return
 		}
-		entityResponse.Result.Details = []entity.Detail{{InternalCode: strconv.Itoa(http.StatusOK), Message: http.StatusText(http.StatusOK)}}
+
 		c.Set("entityResponse", *entityResponse)
 		c.JSON(http.StatusOK, entityResponse)
 	}
