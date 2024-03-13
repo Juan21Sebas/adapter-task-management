@@ -15,6 +15,11 @@ Además de estas operaciones básicas, la API está diseñada para manejar efici
 ## Documentación detallada en Swagger
 En el repositorio existe una carpeta llamada swagger, dentro hay un archivo en formato yaml que contiene la documentación detallada de la API, para acceder a ella se recomienda utilizar el siguiente editor: https://editor.swagger.io/
 
+## Documentacion Detallada, explicacion de Prubas de carga con jmeter, digrama de componentes 
+
+https://www.canva.com/design/DAF_ZsVnFRc/saI1oziJxArq_-Lfk_tsjw/edit?utm_content=DAF_ZsVnFRc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+
 ## EndPoints 
 POST    task/
 GET     task/:id
