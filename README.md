@@ -21,7 +21,7 @@ https://www.canva.com/design/DAF_ZsVnFRc/saI1oziJxArq_-Lfk_tsjw/edit?utm_content
 
 ## Autorizacion
 
-Recuerde que para la autorizacion se creo un middleware que valida o simula el uso de un token, para que no tenga problemas con el uso de la peticion recuerde en las cabeceras agregar Authorization y en value dejar el token generado en el curl de generador de tokens, de lo contrario le saldra un mensaje de Unauthorized
+Recuerde que para la autorizacion se creo un middleware que valida o simula el uso de un token, para que no tenga problemas con el uso de la peticion recuerde en las cabeceras agregar Authorization y en value dejar mi_token_secreto, de lo contrario le saldra un mensaje de Unauthorized
 
 ## EndPoints 
 POST    task/
