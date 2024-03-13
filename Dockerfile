@@ -8,10 +8,13 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 # Instala Git si es necesario
-RUN apt-get install --no-install-recommends -y git
+RUN apt-get update && apt-get install --no-install-recommends -y git
 
 # Copia todo el código fuente
 COPY . .
+
+# Copia el archivo de base de datos SQLite
+COPY task.db ./
 
 # Compila la aplicación
 RUN go build -mod=vendor -ldflags '-s -w' -o build/bin/task main.go
@@ -28,8 +31,11 @@ COPY --from=build /app/cmd/configs /app/cmd/configs
 # Copia el binario
 COPY --from=build /app/build/bin/task /app
 
+# Copia el archivo de base de datos SQLite
+COPY --from=build /app/task.db /app
+
 # Exponer puertos
-EXPOSE 8080
+EXPOSE 8086
 
 # Establecer el usuario no root
 USER nonroot:nonroot

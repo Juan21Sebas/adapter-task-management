@@ -29,5 +29,5 @@ func CreateServer(db *sql.DB) *gin.Engine {
 
 func RunServer(db *sql.DB) {
 	server := CreateServer(db)
-	server.Run(":8080")
+	server.Run(":8086")
 }

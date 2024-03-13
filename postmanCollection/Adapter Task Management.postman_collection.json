@@ -10,7 +10,13 @@
 			"name": "Create",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "mi_token_secreto",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"title\": \"Título de la tarea\",\n    \"description\": \"Descripción de la tarea\",\n    \"status\": \"Completadas\"\n}",
@@ -41,7 +47,13 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "mi_token_secreto",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "",
@@ -52,14 +64,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/task/1",
+					"raw": "localhost:8080/task/d7c8be9f-50fc-49ee-a905-4d244af06d3f",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"task",
-						"1"
+						"d7c8be9f-50fc-49ee-a905-4d244af06d3f"
 					]
 				}
 			},
@@ -69,7 +81,13 @@
 			"name": "Update",
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "mi_token_secreto",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"title\": \"Cambio\",\n    \"description\": \"Cambio\",\n    \"status\": \"Completada\"\n}",
@@ -80,14 +98,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/task/1",
+					"raw": "localhost:8080/task/d7c8be9f-50fc-49ee-a905-4d244af06d3f",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"task",
-						"1"
+						"d7c8be9f-50fc-49ee-a905-4d244af06d3f"
 					]
 				}
 			},
@@ -97,7 +115,13 @@
 			"name": "Delete",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "mi_token_secreto",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "",
@@ -108,14 +132,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/task/1",
+					"raw": "localhost:8080/task/d7c8be9f-50fc-49ee-a905-4d244af06d3f",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"task",
-						"1"
+						"d7c8be9f-50fc-49ee-a905-4d244af06d3f"
 					]
 				}
 			},
