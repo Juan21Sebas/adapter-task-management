@@ -23,5 +23,5 @@ type DBRepository interface {
 	CreateTask(ctx *gin.Context, request *model.Task) (string, error)
 	SelectTask(ctx *gin.Context, request *modelget.Task) (*schemaget.TaskResponse, error)
 	UpdateTask(ctx *gin.Context, request *modelupdate.Task) (*schemaUpdate.TaskResponse, error)
-	DeleteTask(ctx *gin.Context, request *modeldelete.Task) (string, error)
+	DeleteTask(ctx *gin.Context, request *modeldelete.Task) error
 }

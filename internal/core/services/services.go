@@ -38,7 +38,7 @@ func (r *Repository) CreateTask(ctx *gin.Context, request *model.Task) (*entity.
 				{
 					InternalCode: strconv.Itoa(http.StatusOK),
 					Message:      http.StatusText(http.StatusOK),
-					Detail:       "",
+					Detail:       "Registro Creado",
 				},
 			},
 			Source: "Create Task",
@@ -61,7 +61,7 @@ func (r *Repository) SelectTask(ctx *gin.Context, request *modelget.Task) (*enti
 				{
 					InternalCode: strconv.Itoa(http.StatusOK),
 					Message:      http.StatusText(http.StatusOK),
-					Detail:       "",
+					Detail:       "Registro Seleccionado",
 				},
 			},
 			Source: "Select Task",
@@ -84,7 +84,7 @@ func (r *Repository) UpdateTask(ctx *gin.Context, request *modelupdate.Task) (*e
 				{
 					InternalCode: strconv.Itoa(http.StatusOK),
 					Message:      http.StatusText(http.StatusOK),
-					Detail:       "",
+					Detail:       "Registro Actualizado",
 				},
 			},
 			Source: "Update Task",
@@ -95,19 +95,18 @@ func (r *Repository) UpdateTask(ctx *gin.Context, request *modelupdate.Task) (*e
 
 func (r *Repository) DeleteTask(ctx *gin.Context, request *modeldelete.Task) (*entity.Response, error) {
 
-	resp, err := r.repo.DeleteTask(ctx, request)
+	err := r.repo.DeleteTask(ctx, request)
 	if err != nil {
 		return nil, err
 	}
 
 	return &entity.Response{
-		Data: resp,
 		Result: entity.Result{
 			Details: []entity.Detail{
 				{
 					InternalCode: strconv.Itoa(http.StatusOK),
 					Message:      http.StatusText(http.StatusOK),
-					Detail:       "",
+					Detail:       "Registro Eliminado",
 				},
 			},
 			Source: "Delete Task",

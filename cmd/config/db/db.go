@@ -9,7 +9,7 @@ import (
 
 func NewSQLiteDB() (*sql.DB, error) {
 	// Abrir la base de datos
-	db, err := sql.Open("sqlite3", "./task.db")
+	db, err := sql.Open("sqlite3", "../task.db")
 	if err != nil {
 		fmt.Println("Error al abrir la base de datos:", err)
 		return nil, err
@@ -24,7 +24,7 @@ func NewSQLiteDB() (*sql.DB, error) {
 
 	// Crear una tabla si no existe
 	_, err = db.Exec(`CREATE TABLE IF NOT EXISTS tasks (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+	id TEXT PRIMARY KEY,
     title TEXT,
     description TEXT,
     status BOOLEAN,
