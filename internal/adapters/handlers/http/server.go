@@ -1,6 +1,7 @@
 package http
 
 import (
+	"adapter-task-management/internal/adapters/handlers/http/middleware"
 	"time"
 
 	"database/sql"
@@ -18,6 +19,8 @@ func CreateServer(db *sql.DB) *gin.Engine {
 		RequestHeaders: "Origin, Authorization, Content-Type, Access-Control-Allow-Origin",
 		MaxAge:         50 * time.Second,
 	}))
+
+	server.Use(middleware.AuthenticationMiddleware())
 
 	RegisterRoutes(server, db)
 

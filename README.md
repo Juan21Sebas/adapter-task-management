@@ -19,6 +19,9 @@ En el repositorio existe una carpeta llamada swagger, dentro hay un archivo en f
 
 https://www.canva.com/design/DAF_ZsVnFRc/saI1oziJxArq_-Lfk_tsjw/edit?utm_content=DAF_ZsVnFRc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
+## Autorizacion
+
+Recuerde que para la autorizacion se creo un middleware que valida o simula el uso de un tocken, para que no tenga problemas con el uso de la peticion recuerde en las cabeceras agregar Authorization y en value dejar mi_token_secreto, de lo contrario le saldra un mensaje de Unauthorized
 
 ## EndPoints 
 POST    task/

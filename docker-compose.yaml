@@ -2,7 +2,7 @@ version: '3'
  
 services:
   sqlite:
-    image: "sqlite:latest"  # Utiliza la imagen de SQLite
+    image: "mcr.microsoft.com/azureiotedge/sqlite"  # Utiliza la imagen de SQLite
     volumes:
       - ../task.db:/task.db  # Monta el archivo de la base de datos SQLite en el contenedor
 

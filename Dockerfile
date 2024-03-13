@@ -14,7 +14,7 @@ RUN apt-get install --no-install-recommends -y git
 COPY . .
 
 # Compila la aplicación
-RUN go build -mod=vendor -ldflags '-s -w' -o build/bin/auth-login main.go
+RUN go build -mod=vendor -ldflags '-s -w' -o build/bin/task main.go
 
 # Etapa de producción
 FROM gcr.io/distroless/base-debian12:nonroot
@@ -26,7 +26,7 @@ WORKDIR /app
 COPY --from=build /app/cmd/configs /app/cmd/configs
 
 # Copia el binario
-COPY --from=build /app/build/bin/auth-login /app
+COPY --from=build /app/build/bin/task /app
 
 # Exponer puertos
 EXPOSE 8080
@@ -35,4 +35,4 @@ EXPOSE 8080
 USER nonroot:nonroot
 
 # Define el comando de entrada
-ENTRYPOINT ["./auth-login"]
+ENTRYPOINT ["./task"]
