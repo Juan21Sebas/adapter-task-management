@@ -1,0 +1,16 @@
+version: '3'
+ 
+services:
+  sqlite:
+    image: "sqlite:latest"  # Utiliza la imagen de SQLite
+    volumes:
+      - ../task.db:/task.db  # Monta el archivo de la base de datos SQLite en el contenedor
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - sqlite  # Dependencia del servicio SQLite en lugar de Redis
