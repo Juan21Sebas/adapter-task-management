@@ -12,19 +12,19 @@ import (
 	"adapter-task-management/internal/core/ports"
 )
 
-type topsecretHandler struct {
+type taskManagementHandler struct {
 	taskService    ports.CommunicationServices
 	taskRepository ports.DBRepository
 }
 
-func newHandler(service ports.CommunicationServices, repo ports.DBRepository) *topsecretHandler {
-	return &topsecretHandler{
+func newHandler(service ports.CommunicationServices, repo ports.DBRepository) *taskManagementHandler {
+	return &taskManagementHandler{
 		taskService:    service,
 		taskRepository: repo,
 	}
 }
 
-func (o *topsecretHandler) postTask() gin.HandlerFunc {
+func (o *taskManagementHandler) postTask() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var task model.Task
 		if err := c.BindJSON(&task); err != nil {
@@ -42,7 +42,7 @@ func (o *topsecretHandler) postTask() gin.HandlerFunc {
 	}
 }
 
-func (o *topsecretHandler) getTask() gin.HandlerFunc {
+func (o *taskManagementHandler) getTask() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var task modelget.Task
 		task.Id = c.Param("id")
@@ -61,7 +61,7 @@ func (o *topsecretHandler) getTask() gin.HandlerFunc {
 	}
 }
 
-func (o *topsecretHandler) putTask() gin.HandlerFunc {
+func (o *taskManagementHandler) putTask() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var task modelupdate.Task
 		task.Id = c.Param("id")
@@ -84,7 +84,7 @@ func (o *topsecretHandler) putTask() gin.HandlerFunc {
 	}
 }
 
-func (o *topsecretHandler) deleteTask() gin.HandlerFunc {
+func (o *taskManagementHandler) deleteTask() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var task modeldelete.Task
 		task.Id = c.Param("id")

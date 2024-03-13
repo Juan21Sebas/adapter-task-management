@@ -9,7 +9,7 @@ import (
 
 func NewSQLiteDB() (*sql.DB, error) {
 	// Abrir la base de datos
-	db, err := sql.Open("sqlite3", "../task.db")
+	db, err := sql.Open("sqlite3", "./task.db")
 	if err != nil {
 		fmt.Println("Error al abrir la base de datos:", err)
 		return nil, err
