@@ -2,8 +2,9 @@ package http
 
 import (
 	"adapter-task-management/internal/adapters/handlers/http/middleware"
-	"database/sql"
 	"time"
+
+	"database/sql"
 
 	"github.com/gin-gonic/gin"
 	cors "github.com/itsjamie/gin-cors"
@@ -19,10 +20,7 @@ func CreateServer(db *sql.DB) *gin.Engine {
 		MaxAge:         50 * time.Second,
 	}))
 
-	jwtMiddleware := middleware.NewJWTMiddleware("s3cr3tK3yF0rJWT!")
-
-	// Usar el middleware JWT directamente con Gin
-	server.Use(jwtMiddleware.MiddlewareFunc)
+	server.Use(middleware.AuthenticationMiddleware())
 
 	RegisterRoutes(server, db)
 
